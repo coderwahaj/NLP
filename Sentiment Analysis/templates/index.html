@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SENTIMENT ANALYZER </title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+    <div class="hologram-container">
+      <div class="hologram-header">
+        <div class="logo">SENTIMENT_ANALYZER</div>
+        <div class="header-text">
+          <p>-- SENTIMENT_ANALYST_v2.0 --</p>
+          <p>-- PROCESSING_INPUT_DATASTREAM --</p>
+        </div>
+      </div>
+
+      <div class="hologram-card">
+        <form action="/" method="post">
+          <div class="input-section">
+            <label for="review_content" class="input-label"
+              >INPUT STREAM:</label
+            >
+            <textarea
+              name="review_content"
+              id="review_content"
+              rows="7"
+              placeholder="[PASTE REVIEW DATA HERE...]"
+              required
+            >{{ input_text or '' }}</textarea>
+          </div>
+          <button type="submit" class="holo-btn">
+            ANALYZE DATA
+            <div class="holo-btn-glitch"></div>
+          </button>
+        </form>
+      </div>
+
+      {% if prediction_result %}
+      <div
+        id="result"
+        class="result-card {{ 'positive' if 'POSITIVE' in prediction_result else 'negative' }}"
+      >
+        <div class="result-header">
+          ANALYSIS_COMPLETE &gt;
+        </div>
+        <div class="result-content">
+          <p>{{ prediction_result }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
