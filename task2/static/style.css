@@ -1,0 +1,388 @@
+/* static/style.css */
+
+:root {
+  --primary-glow: #00f6ff;
+
+  --secondary-glow: #ff00f2;
+
+  --bg-color: #030712;
+
+  --container-bg: rgba(22, 29, 62, 0.4);
+
+  --border-color: rgba(0, 246, 255, 0.3);
+
+  --text-color: #d1d5db;
+
+  --font-primary: "Orbitron", sans-serif;
+
+  --font-secondary: "Share Tech Mono", monospace;
+
+  --real-color: #00ff6a;
+
+  --fake-color: #ff2d55;
+}
+
+body {
+  font-family: var(--font-secondary);
+  /* Remove existing background properties and use this instead */
+  background: #030712; /* Fallback color */
+  background-image: linear-gradient(
+      115deg,
+      #00f6ff 0%,
+      #091841 50%,
+      #6a2583 100%
+    ),
+    linear-gradient(-115deg, #00f6ff 0%, #030712 50%, #ff00f2 100%);
+  background-size: 200% 200%;
+  background-attachment: fixed;
+  animation: gradientShift 20s ease infinite;
+
+  color: var(--text-color);
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* --- Scanline Overlay --- */
+
+.scanline {
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: repeating-linear-gradient(
+    to bottom,
+
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0) 2px,
+
+    rgba(255, 255, 255, 0.02) 3px,
+
+    rgba(255, 255, 255, 0.02) 4px
+  );
+
+  pointer-events: none;
+
+  z-index: 10;
+
+  animation: scan 10s linear infinite;
+}
+
+@keyframes scan {
+  from {
+    background-position-y: 0;
+  }
+
+  to {
+    background-position-y: 100px;
+  }
+}
+
+.container {
+  background-color: var(--container-bg);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid var(--border-color);
+
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.1),
+    inset 0 0 15px rgba(0, 246, 255, 0.1);
+
+  padding: 2rem 2.5rem;
+
+  border-radius: 5px;
+
+  width: 100%;
+
+  max-width: 750px;
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+/* --- HUD Corner Brackets --- */
+
+.container::before,
+.container::after {
+  content: "";
+
+  position: absolute;
+
+  width: 30px;
+
+  height: 30px;
+
+  border-color: var(--primary-glow);
+
+  border-style: solid;
+}
+
+.container::before {
+  top: -2px;
+
+  left: -2px;
+
+  border-width: 2px 0 0 2px;
+}
+
+.container::after {
+  top: -2px;
+
+  right: -2px;
+
+  border-width: 2px 2px 0 0;
+}
+
+.hud-header {
+  margin-bottom: 2rem;
+
+  text-shadow: 0 0 5px var(--primary-glow);
+}
+
+.title-line {
+  font-family: var(--font-primary);
+
+  font-size: 2rem;
+
+  color: white;
+
+  margin: 0;
+}
+
+.system-prompt {
+  color: var(--primary-glow);
+
+  margin-right: 0.5rem;
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+
+  color: var(--primary-glow);
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.subtitle {
+  letter-spacing: 2px;
+
+  font-size: 0.8rem;
+
+  opacity: 0.7;
+
+  margin-top: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+
+  padding: 1rem;
+
+  font-family: var(--font-secondary);
+
+  font-size: 1.2rem;
+
+  background-color: rgba(0, 0, 0, 0.3);
+
+  color: var(--text-color);
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 3px;
+
+  resize: vertical;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+  border-color: var(--primary-glow);
+
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
+
+  outline: none;
+}
+
+/* --- Cyberpunk Glitch Button --- */
+
+.cybr-btn {
+  font-family: var(--font-primary);
+
+  margin-top: 1rem;
+
+  width: 100%;
+
+  padding: 1rem;
+
+  cursor: pointer;
+
+  background: transparent;
+
+  color: var(--primary-glow);
+
+  border: 2px solid var(--primary-glow);
+
+  text-transform: uppercase;
+
+  font-size: 1.1rem;
+
+  transition: background-color 0.2s;
+
+  position: relative;
+
+  text-shadow: 0 0 5px var(--primary-glow);
+}
+
+.cybr-btn:hover {
+  background-color: rgba(0, 246, 255, 0.1);
+}
+
+.cybr-btn:active {
+  background-color: rgba(0, 246, 255, 0.2);
+}
+
+.cybr-btn__glitch {
+  display: none;
+}
+
+.cybr-btn:hover .cybr-btn__glitch {
+  display: block;
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background: var(--primary-glow);
+
+  mix-blend-mode: screen;
+
+  animation: glitch 0.3s infinite;
+
+  color: var(--bg-color);
+
+  text-shadow: none;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: inset(50% 0 30% 0);
+  }
+
+  20% {
+    clip-path: inset(10% 0 70% 0);
+  }
+
+  40% {
+    clip-path: inset(80% 0 5% 0);
+  }
+
+  60% {
+    clip-path: inset(30% 0 40% 0);
+  }
+
+  80% {
+    clip-path: inset(60% 0 20% 0);
+  }
+
+  100% {
+    clip-path: inset(25% 0 55% 0);
+  }
+}
+
+/* --- Result Box --- */
+
+.result-box {
+  margin-top: 2rem;
+
+  border: 1px solid;
+
+  padding: 1.5rem;
+
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-header {
+  font-family: var(--font-primary);
+
+  text-align: left;
+
+  margin-bottom: 1rem;
+}
+
+.result-content p {
+  font-size: 1.2rem;
+
+  margin: 0;
+}
+
+.result-box.real {
+  border-color: var(--real-color);
+
+  color: var(--real-color);
+
+  box-shadow: 0 0 20px rgba(0, 255, 106, 0.2);
+}
+
+.result-box.fake {
+  border-color: var(--fake-color);
+
+  color: var(--fake-color);
+
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAKE NEWS DETECTOR // FND</title>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="scanline"></div>
+    <div class="container">
+      <div class="hud-header">
+        <h1 class="title-line">
+          <span class="system-prompt">&gt;</span><span id="typing-text"></span
+          ><span class="cursor">_</span>
+        </h1>
+        <p class="subtitle">INPUT DATA STREAM FOR AUTHENTICITY ANALYSIS</p>
+      </div>
+
+      <form action="/" method="post">
+        <div class="textarea-container">
+          <textarea
+            name="news_content"
+            rows="7
+            "
+            placeholder="[PASTE ARTICLE DATA HERE...]"
+            required
+          >
+{{ input_text or '' }}</textarea
+          >
+        </div>
+        <button type="submit" class="cybr-btn">
+          ANALYZE<span aria-hidden>_</span>
+          <span aria-hidden class="cybr-btn__glitch">ANALYZE_</span>
+        </button>
+      </form>
+
+      {% if prediction_result %}
+      <div
+        id="result"
+        class="result-box {{ 'real' if 'REAL' in prediction_result else 'fake' }}"
+      >
+        <div class="result-header">[ANALYSIS COMPLETE]</div>
+        <div class="result-content">
+          <p>{{ prediction_result }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      const text = "FAKE_NEWS_DETECTOR_v2.5";
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          document.getElementById("typing-text").innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100);
+        }
+      }
+      window.onload = function () {
+        typeWriter();
+      };
+    </script>
+  </body>
+</html>
