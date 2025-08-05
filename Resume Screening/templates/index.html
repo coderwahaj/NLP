@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Screener | NLP</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Resume Screener</h1>
+        <p>Upload a resume and find matching job descriptions.</p>
+      </div>
+
+      <div class="card">
+        <form action="/" method="post" enctype="multipart/form-data">
+          <div class="input-section">
+            <label for="resume_file" class="input-label">Upload a Resume</label>
+            <input type="file" name="resume_file" id="resume_file" accept=".pdf,.docx,.txt" required />
+          </div>
+          <button type="submit" class="submit-btn">
+            Analyze & Match
+          </button>
+        </form>
+      </div>
+
+      {% if results %}
+      <div class="results-container">
+        <h2>Top Job Matches for: <span>{{ resume_filename }}</span></h2>
+        {% for job in results %}
+        <div class="result-card">
+          <div class="result-header">
+            <span class="score">{{ job.score }}% Match</span>
+            <span class="category">{{ job.category }}</span>
+          </div>
+          <div class="result-content">
+            <p>{{ job.description_snippet }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

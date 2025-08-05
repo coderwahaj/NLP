@@ -1,0 +1,150 @@
+:root {
+  --bg-color: #f4f7f9;
+  --card-bg: #ffffff;
+  --text-color: #2c3e50;
+  --header-color: #1a237e;
+  --accent-color: #4CAF50; /* Green */
+  --accent-hover: #45a049;
+  --border-color: #e0e0e0;
+  --score-color: #38b2ac; /* Teal */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Roboto Mono', monospace;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--header-color);
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.input-section {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.input-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--header-color);
+}
+
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: var(--font-secondary);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.results-container {
+  text-align: left;
+}
+
+.results-container h2 {
+  font-size: 1.5rem;
+  color: var(--header-color);
+  margin-bottom: 1.5rem;
+}
+
+.results-container h2 span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #7f8c8d;
+    display: block;
+}
+
+.result-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 5px solid var(--accent-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.score {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--score-color);
+}
+
+.category {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.result-content p {
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
