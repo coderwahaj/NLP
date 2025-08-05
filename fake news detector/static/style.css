@@ -28,9 +28,9 @@ body {
   background: #030712; /* Fallback color */
   background-image: linear-gradient(
       115deg,
-      #00f6ff 0%,
+      #1f4668 0%,
       #091841 50%,
-      #6a2583 100%
+      #a057a6 100%
     ),
     linear-gradient(-115deg, #00f6ff 0%, #030712 50%, #ff00f2 100%);
   background-size: 200% 200%;
