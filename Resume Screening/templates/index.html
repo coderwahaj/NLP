@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume Screener | NLP</title>
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Screener</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; color: #1c1e21; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+        h1, h2 { color: #333; }
+        .upload-form { margin-bottom: 30px; padding: 20px; border: 2px dashed #ccd0d5; border-radius: 8px; text-align: center; }
+        .upload-form input[type="file"] { margin-bottom: 10px; }
+        .btn { background-color: #1877f2; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; font-size: 16px; cursor: pointer; }
+        .btn:hover { background-color: #166fe5; }
+        .results-header { border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
+        .job-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 15px; }
+        .job-card h3 { margin-top: 0; display: flex; justify-content: space-between; align-items: center; }
+        .score { font-size: 18px; font-weight: bold; color: #28a745; }
+        .skills-title { font-weight: bold; margin-top: 15px; }
+        .skill-badge { display: inline-block; background-color: #e7f3ff; color: #1877f2; padding: 5px 10px; margin: 3px; border-radius: 15px; font-size: 14px; }
+        .error { color: #dc3545; font-weight: bold; }
+    </style>
+</head>
+<body>
     <div class="container">
-      <div class="header">
-        <h1>Resume Screener</h1>
-        <p>Upload a resume and find matching job descriptions.</p>
-      </div>
-
-      <div class="card">
-        <form action="/" method="post" enctype="multipart/form-data">
-          <div class="input-section">
-            <label for="resume_file" class="input-label">Upload a Resume</label>
-            <input type="file" name="resume_file" id="resume_file" accept=".pdf,.docx,.txt" required />
-          </div>
-          <button type="submit" class="submit-btn">
-            Analyze & Match
-          </button>
-        </form>
-      </div>
-
-      {% if results %}
-      <div class="results-container">
-        <h2>Top Job Matches for: <span>{{ resume_filename }}</span></h2>
-        {% for job in results %}
-        <div class="result-card">
-          <div class="result-header">
-            <span class="score">{{ job.score }}% Match</span>
-            <span class="category">{{ job.category }}</span>
-          </div>
-          <div class="result-content">
-            <p>{{ job.description_snippet }}</p>
-          </div>
+        <h1>AI Resume Screener</h1>
+        <p>Upload a resume (PDF or DOCX) to find the best-matching job profiles from our database.</p>
+        
+        <div class="upload-form">
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="resume_file" accept=".pdf,.docx">
+                <br>
+                <button type="submit" class="btn">Analyze Resume</button>
+            </form>
         </div>
-        {% endfor %}
-      </div>
-      {% endif %}
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if results %}
+            <div class="results-header">
+                <h2>Top {{ results|length }} Job Recommendations for {{ candidate_name }}</h2>
+                <p>Based on resume: <strong>{{ resume_filename }}</strong></p>
+            </div>
+            
+            {% for job in results %}
+                <div class="job-card">
+                    <h3>
+                        <span>{{ job.title }}</span>
+                        <span class="score">Match Score: {{ job.score }}%</span>
+                    </h3>
+                    
+                    {% if job.matching_skills %}
+                        <p class="skills-title">Matching Skills:</p>
+                        <div>
+                            {% for skill in job.matching_skills %}
+                                <span class="skill-badge">{{ skill }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No specific matching skills found from our dictionary.</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
-  </body>
+</body>
 </html>
