@@ -8,6 +8,9 @@ from sentence_transformers import SentenceTransformer, util
 from werkzeug.utils import secure_filename
 import joblib
 import warnings
+
+
+
 from docx import Document
 from pdfminer.high_level import extract_text as extract_pdf_text
 
