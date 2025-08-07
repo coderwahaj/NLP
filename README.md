@@ -95,12 +95,6 @@ Each task has a separate `app.py`—run the one you want to use.
 
 ---
 
-## 🌐 UI Snapshots
-
-> Include screenshots here (upload them in `images/` folder and link with markdown)
-
----
-
 ## 💡 Future Enhancements
 
 * Deploy to Heroku or Render
