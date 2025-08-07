@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI News Classifier</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="main-header">AI NEWS CLASSIFIER</h1>
+        <p class="sub-header">
+          Advanced Text Analysis • Paste Your Article • Get Instant Category
+        </p>
+      </header>
+
+      <div class="tech-card">
+        <h2>📰 ARTICLE INPUT PORTAL</h2>
+        <p>Paste your news article text below for AI classification.</p>
+        <form action="/" method="post">
+          <textarea
+            name="news_text"
+            rows="10"
+            placeholder="Paste your news article here..."
+          >
+{{ input_text }}</textarea
+          >
+          <button type="submit">Classify Article</button>
+        </form>
+      </div>
+
+      {% if prediction %}
+      <div class="results-container">
+        <h2 class="results-header">🎯 CLASSIFICATION COMPLETE</h2>
+        <div class="result-card">
+          <h3>PREDICTED CATEGORY:</h3>
+          <p class="prediction-text">{{ prediction }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <footer>
+      <p>🚀 Powered by Advanced NLP • Multiclass Classification</p>
+    </footer>
+  </body>
+</html>
