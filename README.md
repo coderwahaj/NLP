@@ -1,87 +1,106 @@
-# 🧠 NLP Applications: Resume Screening, Sentiment Analysis, News Classification & Fake News Detection
+# 🧠 Natural Language Processing Projects using Flask
 
-This repository contains a collection of Natural Language Processing (NLP) mini-projects built using **Flask** as a front-end interface and **scikit-learn** (with other tools) for backend ML logic. Each project is fully functional and features a clean, responsive UI for interaction.
+This repository contains multiple complete NLP applications, all built using **Flask** with clean and responsive **custom UIs**.
 
----
+## 🚀 Projects Included
 
-## 📁 Projects Included
+### ✅ 1. Sentiment Analysis on Product Reviews
+- **Dataset**: IMDb or Amazon Product Reviews
+- **Model**: Logistic Regression, Naive Bayes
+- **Bonus**: Visualization of positive/negative frequent words
 
-### 📝 Task 1: Sentiment Analysis on Product Reviews
-- Dataset: IMDb / Amazon Product Reviews (Kaggle)
-- Binary classification of product reviews as **positive** or **negative**
-- Preprocessing: Lowercasing, stopword removal
-- Vectorization: TF-IDF
-- Classifier: Logistic Regression & Naive Bayes (compared)
-- **Bonus**: Word cloud of most common positive & negative words
+### ✅ 2. News Category Classification
+- **Dataset**: AG News Dataset
+- **Model**: Logistic Regression, Random Forest, SVM, Neural Network
+- **Bonus**: Word clouds, bar charts
 
-### 📰 Task 2: News Category Classification
-- Dataset: AG News (Kaggle)
-- Multiclass classification: business, sports, politics, technology
-- Preprocessing: Lemmatization, stopword removal, tokenization
-- Vectorization: TF-IDF
-- Classifiers: Logistic Regression, Random Forest, SVM
-- **Bonus**: Word cloud per category
-- Optional: Feedforward Neural Network (Keras)
+### ✅ 3. Fake News Detection
+- **Dataset**: Fake and Real News Dataset
+- **Model**: Logistic Regression, SVM
+- **Bonus**: Visualization with Word Cloud
 
-### 🕵️‍♂️ Task 3: Fake News Detection
-- Dataset: Fake and Real News Dataset (Kaggle)
-- Binary classification: Real vs. Fake news articles
-- Preprocessing: Tokenization, lemmatization, stopwords
-- Model: Logistic Regression & SVM
-- Evaluation: Accuracy, F1-Score
-- **Bonus**: Word clouds for Fake vs. Real news
+### ✅ 4. Resume Screening using NLP
+- **Dataset**: Resume + Job Descriptions Dataset
+- **Model**: Semantic Search using Sentence Transformers
+- **Bonus**: Matching percentage, named entity extraction, frontend resume upload
 
-### 📄 Task 4: Resume Screening using NLP
-- Dataset: Resume Dataset + Job Dataset (Kaggle)
-- Embedding-based resume matcher using **cosine similarity**
-- Used **Sentence Transformers** for semantic search
-- Output includes:
-  - Match score (e.g., 85%)
-  - Matched job title
-  - Highlighted skills
-- **Bonus**: 
-  - Entity extraction (skills, experience)
-  - Beautiful upload panel and result UI
+
+## 💡 Features
+
+- Clean and **fully functional frontend UIs** for each app
+- Complete **backend logic using Flask**
+- Interactive model results with **visualizations**
+- Upload resume and view job matches in real-time
+- Modularized code for easy extension
 
 ---
 
-## 🛠️ Tools & Libraries Used
+## 🖥️ Folder Structure
 
-- **Python 3.x**
-- **Flask** (for web front-end)
-- **Scikit-learn** (ML modeling)
-- **Pandas** & **NumPy** (data handling)
-- **NLTK** / **spaCy** (text preprocessing)
-- **Sentence Transformers** (for embeddings)
-- **Keras** (basic neural network)
-- **Matplotlib** / **WordCloud** (visualizations)
+```
+
+nlp-projects/
+│
+├── task1\_sentiment\_analysis/
+│   ├── app.py
+│   ├── static/
+│   ├── templates/
+│   └── model.pkl
+│
+├── task2\_news\_classification/
+│   ├── app.py
+│   ├── static/
+│   ├── templates/
+│   └── model.pkl
+│
+├── task3\_fake\_news\_detection/
+│   ├── app.py
+│   ├── static/
+│   ├── templates/
+│   └── model.pkl
+│
+├── task4\_resume\_screening/
+│   ├── app.py
+│   ├── static/
+│   ├── templates/
+│   └── resume\_matcher.py
+│
+└── requirements.txt
+
+```
+
+## ⚙️ How to Run
+
+1. Clone the repository  
+   `git clone https://github.com/yourusername/nlp-projects.git`
+
+2. Navigate to a task directory  
+   `cd task1_sentiment_analysis`
+
+3. Install dependencies  
+   `pip install -r requirements.txt`
+
+4. Run the Flask server  
+   `python app.py`
+
+5. Open in browser:  
+   `http://localhost:5000`
 
 ---
 
-## 🧪 How to Run Locally
+## 📈 What I Learned
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/nlp-mini-projects.git
-   cd nlp-mini-projects
-2. Create virtual environment:
+- NLP techniques like **tokenization, lemmatization, stopword removal**
+- Feature extraction using **TF-IDF, CountVectorizer**
+- **Multiclass and binary classification** (Logistic Regression, Naive Bayes, SVM, Random Forest, Neural Network)
+- **Text similarity and semantic matching** using Sentence Transformers
+- Real-time resume screening and **cosine similarity**
+- Designing beautiful **Flask UIs** with HTML/CSS
+- Visualizing word frequencies using **WordCloud and matplotlib**
+- Serving ML models via **Flask APIs**
+- Full-stack development (frontend + backend) for **NLP systems**
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # or venv\Scripts\activate on Windows
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run a project:
-
-   ```bash
-   python app.py
-   ```
+---
 
 Each task has a separate `app.py`—run the one you want to use.
 
