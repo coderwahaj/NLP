@@ -27,32 +27,26 @@
       <h2>📰 ARTICLE INPUT PORTAL</h2>
       <p>Paste your news article text below for AI classification.</p>
       <form action="/" method="post">
-        <textarea name="news_text" rows="8" placeholder="Paste your news article here..."></textarea>
-
-        <style>
-          textarea::placeholder {
-            text-align: center;
-            /* center placeholder text horizontally */
-            line-height: calc(1.5em * 8);
-            /* adjust based on rows */
-          }
-        </style>
-
-        </style>
-        {% if prediction %}
-        <div class="results-container">
-          <h2 class="results-header">🎯 CLASSIFICATION COMPLETE</h2>
-          <div class="result-card">
-            <h3>PREDICTED CATEGORY:</h3>
-            <p class="prediction-text">{{ prediction }}</p>
-          </div>
-        </div>
-        {% endif %}
+        <textarea name="news_text" rows="10" placeholder="Paste your news article here...">
+{{ input_text }}</textarea>
+        <button type="submit">Classify Article</button>
+      </form>
     </div>
 
-    <footer>
-      <p>🚀 Powered by Advanced NLP • Multiclass Classification</p>
-    </footer>
+    {% if prediction %}
+    <div class="results-container">
+      <h2 class="results-header">🎯 CLASSIFICATION COMPLETE</h2>
+      <div class="result-card">
+        <h3>PREDICTED CATEGORY:</h3>
+        <p class="prediction-text">{{ prediction }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    <p>🚀 Powered by Advanced NLP • Multiclass Classification</p>
+  </footer>
 </body>
 
 </html>
